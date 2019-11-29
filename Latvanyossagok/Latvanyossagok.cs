@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,14 @@ namespace Latvanyossagok
 {
     public partial class Latvanyossagok : Form
     {
+        MySqlConnection conn;
         public Latvanyossagok()
         {
             InitializeComponent();
+            conn = new MySqlConnection("Server = localhost; Database=latvanyossagokdb; Uid = root; Pwd=;");
+            conn.Open();
         }
-        //kezdes
 
+        
     }
 }
