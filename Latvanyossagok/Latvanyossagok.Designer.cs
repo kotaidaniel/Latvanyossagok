@@ -52,6 +52,8 @@
             this.latvanyossagokLabel = new System.Windows.Forms.Label();
             this.varosTorlesButton = new System.Windows.Forms.Button();
             this.LatvanyossagTorlesButton = new System.Windows.Forms.Button();
+            this.varosModositasButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.varosGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.varosLakossagNumericUpDown)).BeginInit();
             this.latvanyossagokGroupBox.SuspendLayout();
@@ -60,11 +62,13 @@
             // 
             // varosGroupBox
             // 
+            this.varosGroupBox.BackColor = System.Drawing.SystemColors.Control;
             this.varosGroupBox.Controls.Add(this.varosHozzaadasButton);
             this.varosGroupBox.Controls.Add(this.varosLakossagNumericUpDown);
             this.varosGroupBox.Controls.Add(this.varosLakossagLabel);
             this.varosGroupBox.Controls.Add(this.varosNeveTextBox);
             this.varosGroupBox.Controls.Add(this.varosNeveLabel);
+            this.varosGroupBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.varosGroupBox.Location = new System.Drawing.Point(13, 13);
             this.varosGroupBox.Name = "varosGroupBox";
             this.varosGroupBox.Size = new System.Drawing.Size(253, 182);
@@ -286,7 +290,7 @@
             // varosTorlesButton
             // 
             this.varosTorlesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.varosTorlesButton.Location = new System.Drawing.Point(191, 398);
+            this.varosTorlesButton.Location = new System.Drawing.Point(90, 398);
             this.varosTorlesButton.Name = "varosTorlesButton";
             this.varosTorlesButton.Size = new System.Drawing.Size(75, 25);
             this.varosTorlesButton.TabIndex = 6;
@@ -297,7 +301,7 @@
             // LatvanyossagTorlesButton
             // 
             this.LatvanyossagTorlesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.LatvanyossagTorlesButton.Location = new System.Drawing.Point(520, 398);
+            this.LatvanyossagTorlesButton.Location = new System.Drawing.Point(417, 398);
             this.LatvanyossagTorlesButton.Name = "LatvanyossagTorlesButton";
             this.LatvanyossagTorlesButton.Size = new System.Drawing.Size(75, 25);
             this.LatvanyossagTorlesButton.TabIndex = 7;
@@ -305,11 +309,34 @@
             this.LatvanyossagTorlesButton.UseVisualStyleBackColor = true;
             this.LatvanyossagTorlesButton.Click += new System.EventHandler(this.LatvanyossagTorlesButton_Click);
             // 
+            // varosModositasButton
+            // 
+            this.varosModositasButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.varosModositasButton.Location = new System.Drawing.Point(172, 398);
+            this.varosModositasButton.Name = "varosModositasButton";
+            this.varosModositasButton.Size = new System.Drawing.Size(94, 25);
+            this.varosModositasButton.TabIndex = 8;
+            this.varosModositasButton.Text = "Módosítás";
+            this.varosModositasButton.UseVisualStyleBackColor = true;
+            this.varosModositasButton.Click += new System.EventHandler(this.VarosModositasButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.Location = new System.Drawing.Point(498, 398);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 25);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Módosítás";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Latvanyossagok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 435);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.varosModositasButton);
             this.Controls.Add(this.LatvanyossagTorlesButton);
             this.Controls.Add(this.varosTorlesButton);
             this.Controls.Add(this.latvanyossagokListBox);
@@ -359,6 +386,8 @@
         private System.Windows.Forms.Label figyelmeztetesLabel;
         private System.Windows.Forms.Button varosTorlesButton;
         private System.Windows.Forms.Button LatvanyossagTorlesButton;
+        private System.Windows.Forms.Button varosModositasButton;
+        private System.Windows.Forms.Button button1;
     }
 }
 

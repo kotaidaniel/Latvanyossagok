@@ -13,6 +13,7 @@ namespace Latvanyossagok
 {
     public partial class Latvanyossagok : Form
     {
+        Modositas modositas;
         MySqlConnection conn;
         int varosKivalasztottIndex;
         public Latvanyossagok()
@@ -162,6 +163,12 @@ namespace Latvanyossagok
             cmd.Parameters.AddWithValue("@id", id);
             cmd.ExecuteNonQuery();
             LatvanyossagListazas(varosKivalasztottIndex);
+        }
+
+        private void VarosModositasButton_Click(object sender, EventArgs e)
+        {
+            modositas = new Modositas();
+            modositas.Show();
         }
     }
 }
