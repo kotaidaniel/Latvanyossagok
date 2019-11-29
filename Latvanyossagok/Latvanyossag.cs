@@ -31,7 +31,7 @@ namespace Latvanyossagok
 
         public override string ToString()
         {
-            return nev;
+            return nev + " - " + ar + " Ft";
         }
     }
 }

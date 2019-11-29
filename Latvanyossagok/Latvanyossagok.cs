@@ -103,12 +103,22 @@ namespace Latvanyossagok
 
         private void VarosTorlesButton_Click(object sender, EventArgs e)
         {
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM latvanyossagok WHERE varos_id = @id";
+            cmd.Parameters.AddWithValue("@id", varosKivalasztottIndex);
+            cmd.ExecuteNonQuery();
 
+            var cmdDelete = conn.CreateCommand();
+            cmdDelete.CommandText = "DELETE FROM varosok WHERE id = @id";
+            cmdDelete.Parameters.AddWithValue("@id", varosKivalasztottIndex);
+            cmdDelete.ExecuteNonQuery();
+            VarosListazas();
+            LatvanyossagListazas(-1);
         }
 
         private void LatvanyossagHozzaadasButton_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(latvanyossagNeveTextBox.Text) && !string.IsNullOrWhiteSpace(latvanyossagLeirasaTextBox.Text) && latvanyossagNumericUpDown.Value >= 0 && varosKivalasztottIndex != -1)
+            if (!string.IsNullOrWhiteSpace(latvanyossagNeveTextBox.Text) && !string.IsNullOrWhiteSpace(latvanyossagLeirasaTextBox.Text) && latvanyossagNumericUpDown.Value >= 0 && varosokListBox.SelectedIndex != -1)
             {
                 var cmd = conn.CreateCommand();
                 cmd.CommandText = "SELECT nev FROM latvanyossagok";
@@ -143,12 +153,15 @@ namespace Latvanyossagok
             }
         }
 
-        private void LatvanyossagNumericUpDown_ValueChanged(object sender, EventArgs e)
+        private void LatvanyossagTorlesButton_Click(object sender, EventArgs e)
         {
-            if (latvanyossagNumericUpDown.Value < 0)
-            {
-                MessageBox.Show("Az 'Ár' nem vehet fel negatív értéket");
-            }
+            var cmd = conn.CreateCommand();
+            var latvanyossag = (Latvanyossag)latvanyossagokListBox.SelectedItem;
+            var id = latvanyossag.Id;
+            cmd.CommandText = "DELETE FROM latvanyossagok WHERE id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+            LatvanyossagListazas(varosKivalasztottIndex);
         }
     }
 }
