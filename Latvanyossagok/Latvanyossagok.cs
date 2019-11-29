@@ -16,5 +16,7 @@ namespace Latvanyossagok
         {
             InitializeComponent();
         }
+        //kezdes
+
     }
 }
