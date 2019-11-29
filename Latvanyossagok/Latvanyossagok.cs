@@ -105,5 +105,50 @@ namespace Latvanyossagok
         {
 
         }
+
+        private void LatvanyossagHozzaadasButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(latvanyossagNeveTextBox.Text) && !string.IsNullOrWhiteSpace(latvanyossagLeirasaTextBox.Text) && latvanyossagNumericUpDown.Value >= 0 && varosKivalasztottIndex != -1)
+            {
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT nev FROM latvanyossagok";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var nev = reader.GetString("nev").ToUpper();
+                        var megadottnev = latvanyossagNeveTextBox.Text.ToUpper();
+                        if (nev.Equals(megadottnev))
+                        {
+                            MessageBox.Show("Ilyen látványosság már van felvéve");
+                            return;
+                        }
+                    }
+                }
+                cmd.CommandText = "INSERT INTO latvanyossagok(id, nev, leiras, ar, varos_id) VALUES (null, @nev, @leiras, @ar, @varos_id)";
+                cmd.Parameters.AddWithValue("@nev", latvanyossagNeveTextBox.Text);
+                cmd.Parameters.AddWithValue("@leiras", latvanyossagLeirasaTextBox.Text);
+                cmd.Parameters.AddWithValue("@ar", latvanyossagNumericUpDown);
+                cmd.Parameters.AddWithValue("@varos_id", varosKivalasztottIndex);
+
+                cmd.ExecuteNonQuery();
+                latvanyossagNeveTextBox.Clear();
+                latvanyossagLeirasaTextBox.Clear();
+                latvanyossagNumericUpDown.Value = 0;
+                LatvanyossagListazas(varosKivalasztottIndex);
+            }
+            else
+            {
+                MessageBox.Show("Kérjük töltse ki érvényes adatokkal az ívet, valamint válasszon ki egy várost a listából");
+            }
+        }
+
+        private void LatvanyossagNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (latvanyossagNumericUpDown.Value < 0)
+            {
+                MessageBox.Show("Az 'Ár' nem vehet fel negatív értéket");
+            }
+        }
     }
 }

@@ -38,7 +38,7 @@
             this.varosokListBox = new System.Windows.Forms.ListBox();
             this.latvanyossagokGroupBox = new System.Windows.Forms.GroupBox();
             this.forintLabel = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.latvanyossagNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.latvanyossagLeirasaTextBox = new System.Windows.Forms.TextBox();
             this.latvanyossagNeveTextBox = new System.Windows.Forms.TextBox();
             this.latvanyossagArLabel = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@
             this.varosGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.varosLakossagNumericUpDown)).BeginInit();
             this.latvanyossagokGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.latvanyossagNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // varosGroupBox
@@ -149,7 +149,7 @@
             this.latvanyossagokGroupBox.Controls.Add(this.figyelmeztetesLabel);
             this.latvanyossagokGroupBox.Controls.Add(this.latvanyossagHozzaadasButton);
             this.latvanyossagokGroupBox.Controls.Add(this.forintLabel);
-            this.latvanyossagokGroupBox.Controls.Add(this.numericUpDown1);
+            this.latvanyossagokGroupBox.Controls.Add(this.latvanyossagNumericUpDown);
             this.latvanyossagokGroupBox.Controls.Add(this.latvanyossagLeirasaTextBox);
             this.latvanyossagokGroupBox.Controls.Add(this.latvanyossagNeveTextBox);
             this.latvanyossagokGroupBox.Controls.Add(this.latvanyossagArLabel);
@@ -172,13 +172,14 @@
             this.forintLabel.TabIndex = 12;
             this.forintLabel.Text = "Ft";
             // 
-            // numericUpDown1
+            // latvanyossagNumericUpDown
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(171, 106);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(171, 20);
-            this.numericUpDown1.TabIndex = 11;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.latvanyossagNumericUpDown.Location = new System.Drawing.Point(171, 106);
+            this.latvanyossagNumericUpDown.Name = "latvanyossagNumericUpDown";
+            this.latvanyossagNumericUpDown.Size = new System.Drawing.Size(171, 20);
+            this.latvanyossagNumericUpDown.TabIndex = 11;
+            this.latvanyossagNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.latvanyossagNumericUpDown.ValueChanged += new System.EventHandler(this.LatvanyossagNumericUpDown_ValueChanged);
             // 
             // latvanyossagLeirasaTextBox
             // 
@@ -233,6 +234,7 @@
             this.latvanyossagHozzaadasButton.TabIndex = 6;
             this.latvanyossagHozzaadasButton.Text = "Hozzáadás";
             this.latvanyossagHozzaadasButton.UseVisualStyleBackColor = true;
+            this.latvanyossagHozzaadasButton.Click += new System.EventHandler(this.LatvanyossagHozzaadasButton_Click);
             // 
             // latvanyossagokListBox
             // 
@@ -325,7 +327,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.varosLakossagNumericUpDown)).EndInit();
             this.latvanyossagokGroupBox.ResumeLayout(false);
             this.latvanyossagokGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.latvanyossagNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,7 +350,7 @@
         private System.Windows.Forms.TextBox latvanyossagNeveTextBox;
         private System.Windows.Forms.Label latvanyossagArLabel;
         private System.Windows.Forms.Label forintLabel;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown latvanyossagNumericUpDown;
         private System.Windows.Forms.Button latvanyossagHozzaadasButton;
         private System.Windows.Forms.ListBox latvanyossagokListBox;
         private System.Windows.Forms.Label latvanyossagokLabel;
