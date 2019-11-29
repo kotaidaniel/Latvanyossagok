@@ -140,6 +140,7 @@
             this.varosokListBox.Name = "varosokListBox";
             this.varosokListBox.Size = new System.Drawing.Size(253, 173);
             this.varosokListBox.TabIndex = 2;
+            this.varosokListBox.SelectedIndexChanged += new System.EventHandler(this.VarosokListBox_SelectedIndexChanged);
             // 
             // latvanyossagokGroupBox
             // 
@@ -260,6 +261,7 @@
             this.varosTorlesButton.TabIndex = 6;
             this.varosTorlesButton.Text = "Törlés";
             this.varosTorlesButton.UseVisualStyleBackColor = true;
+            this.varosTorlesButton.Click += new System.EventHandler(this.VarosTorlesButton_Click);
             // 
             // LatvanyossagTorlesButton
             // 

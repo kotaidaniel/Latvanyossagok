@@ -14,6 +14,7 @@ namespace Latvanyossagok
     public partial class Latvanyossagok : Form
     {
         MySqlConnection conn;
+        int varosKivalasztottIndex;
         public Latvanyossagok()
         {
             InitializeComponent();
@@ -36,11 +37,27 @@ namespace Latvanyossagok
                     varosokListBox.Items.Add(varos);
                 }
             }
-
-        
-
-
         }
+        void LatvanyossagListazas(int varosid) {
+            latvanyossagokListBox.Items.Clear();
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT id, nev, leiras, ar, varos_id FROM latvanyossagok WHERE varos_id = @varosid";
+            cmd.Parameters.AddWithValue("@varosid", varosid);
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var id = reader.GetInt32("id");
+                    var nev = reader.GetString("nev");
+                    var leiras = reader.GetString("leiras");
+                    var ar = reader.GetInt32("ar");
+                    var varos_id = reader.GetInt32("varos_id");
+                    var latvanyossag = new Latvanyossag(id, nev, leiras, ar, varosid);
+                    latvanyossagokListBox.Items.Add(latvanyossag);
+                }
+            }
+        }
+
 
         private void VarosHozzaadasButton_Click(object sender, EventArgs e)
         {
@@ -67,10 +84,26 @@ namespace Latvanyossagok
                 cmd.ExecuteNonQuery();
 
                 VarosListazas();
+                varosNeveTextBox.Clear();
+                varosLakossagNumericUpDown.Value = 0;
             }
             else {
                 MessageBox.Show("Kérjük töltse ki a mezőket");
             }
+        }
+
+        private void VarosokListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var varos = (Varos)varosokListBox.SelectedItem;
+            var nev = varos.Nev;
+            varosKivalasztottIndex = varos.Id;
+            kivalasztottVarosLabel.Text = nev;
+            LatvanyossagListazas(varosKivalasztottIndex);
+        }
+
+        private void VarosTorlesButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
