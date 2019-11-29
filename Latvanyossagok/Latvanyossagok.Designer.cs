@@ -47,6 +47,11 @@
             this.latvanyossagHozzaadasButton = new System.Windows.Forms.Button();
             this.latvanyossagokListBox = new System.Windows.Forms.ListBox();
             this.latvanyossagokLabel = new System.Windows.Forms.Label();
+            this.varosTorlesButton = new System.Windows.Forms.Button();
+            this.LatvanyossagTorlesButton = new System.Windows.Forms.Button();
+            this.figyelmeztetesLabel = new System.Windows.Forms.Label();
+            this.kivalasztottlabel = new System.Windows.Forms.Label();
+            this.kivalasztottVarosLabel = new System.Windows.Forms.Label();
             this.varosGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.varosLakossagNumericUpDown)).BeginInit();
             this.latvanyossagokGroupBox.SuspendLayout();
@@ -76,10 +81,16 @@
             this.varosHozzaadasButton.TabIndex = 5;
             this.varosHozzaadasButton.Text = "Hozzáadás";
             this.varosHozzaadasButton.UseVisualStyleBackColor = true;
+            this.varosHozzaadasButton.Click += new System.EventHandler(this.VarosHozzaadasButton_Click);
             // 
             // varosLakossagNumericUpDown
             // 
             this.varosLakossagNumericUpDown.Location = new System.Drawing.Point(9, 111);
+            this.varosLakossagNumericUpDown.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
             this.varosLakossagNumericUpDown.Name = "varosLakossagNumericUpDown";
             this.varosLakossagNumericUpDown.Size = new System.Drawing.Size(238, 20);
             this.varosLakossagNumericUpDown.TabIndex = 4;
@@ -132,6 +143,9 @@
             // 
             // latvanyossagokGroupBox
             // 
+            this.latvanyossagokGroupBox.Controls.Add(this.kivalasztottVarosLabel);
+            this.latvanyossagokGroupBox.Controls.Add(this.kivalasztottlabel);
+            this.latvanyossagokGroupBox.Controls.Add(this.figyelmeztetesLabel);
             this.latvanyossagokGroupBox.Controls.Add(this.latvanyossagHozzaadasButton);
             this.latvanyossagokGroupBox.Controls.Add(this.forintLabel);
             this.latvanyossagokGroupBox.Controls.Add(this.numericUpDown1);
@@ -212,9 +226,9 @@
             // latvanyossagHozzaadasButton
             // 
             this.latvanyossagHozzaadasButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.latvanyossagHozzaadasButton.Location = new System.Drawing.Point(9, 139);
+            this.latvanyossagHozzaadasButton.Location = new System.Drawing.Point(247, 139);
             this.latvanyossagHozzaadasButton.Name = "latvanyossagHozzaadasButton";
-            this.latvanyossagHozzaadasButton.Size = new System.Drawing.Size(358, 37);
+            this.latvanyossagHozzaadasButton.Size = new System.Drawing.Size(120, 37);
             this.latvanyossagHozzaadasButton.TabIndex = 6;
             this.latvanyossagHozzaadasButton.Text = "Hozzáadás";
             this.latvanyossagHozzaadasButton.UseVisualStyleBackColor = true;
@@ -222,7 +236,7 @@
             // latvanyossagokListBox
             // 
             this.latvanyossagokListBox.FormattingEnabled = true;
-            this.latvanyossagokListBox.Location = new System.Drawing.Point(362, 219);
+            this.latvanyossagokListBox.Location = new System.Drawing.Point(342, 219);
             this.latvanyossagokListBox.Name = "latvanyossagokListBox";
             this.latvanyossagokListBox.Size = new System.Drawing.Size(253, 173);
             this.latvanyossagokListBox.TabIndex = 5;
@@ -231,17 +245,69 @@
             // 
             this.latvanyossagokLabel.AutoSize = true;
             this.latvanyossagokLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.latvanyossagokLabel.Location = new System.Drawing.Point(429, 198);
+            this.latvanyossagokLabel.Location = new System.Drawing.Point(409, 198);
             this.latvanyossagokLabel.Name = "latvanyossagokLabel";
             this.latvanyossagokLabel.Size = new System.Drawing.Size(116, 18);
             this.latvanyossagokLabel.TabIndex = 4;
             this.latvanyossagokLabel.Text = "Látványosságok";
             // 
+            // varosTorlesButton
+            // 
+            this.varosTorlesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.varosTorlesButton.Location = new System.Drawing.Point(191, 398);
+            this.varosTorlesButton.Name = "varosTorlesButton";
+            this.varosTorlesButton.Size = new System.Drawing.Size(75, 25);
+            this.varosTorlesButton.TabIndex = 6;
+            this.varosTorlesButton.Text = "Törlés";
+            this.varosTorlesButton.UseVisualStyleBackColor = true;
+            // 
+            // LatvanyossagTorlesButton
+            // 
+            this.LatvanyossagTorlesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.LatvanyossagTorlesButton.Location = new System.Drawing.Point(520, 398);
+            this.LatvanyossagTorlesButton.Name = "LatvanyossagTorlesButton";
+            this.LatvanyossagTorlesButton.Size = new System.Drawing.Size(75, 25);
+            this.LatvanyossagTorlesButton.TabIndex = 7;
+            this.LatvanyossagTorlesButton.Text = "Törlés";
+            this.LatvanyossagTorlesButton.UseVisualStyleBackColor = true;
+            // 
+            // figyelmeztetesLabel
+            // 
+            this.figyelmeztetesLabel.AutoSize = true;
+            this.figyelmeztetesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.figyelmeztetesLabel.ForeColor = System.Drawing.Color.Red;
+            this.figyelmeztetesLabel.Location = new System.Drawing.Point(7, 129);
+            this.figyelmeztetesLabel.Name = "figyelmeztetesLabel";
+            this.figyelmeztetesLabel.Size = new System.Drawing.Size(212, 12);
+            this.figyelmeztetesLabel.TabIndex = 13;
+            this.figyelmeztetesLabel.Text = "*Kérjük válasszon ki a városok listából egy várost!";
+            // 
+            // kivalasztottlabel
+            // 
+            this.kivalasztottlabel.AutoSize = true;
+            this.kivalasztottlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.kivalasztottlabel.Location = new System.Drawing.Point(7, 146);
+            this.kivalasztottlabel.Name = "kivalasztottlabel";
+            this.kivalasztottlabel.Size = new System.Drawing.Size(129, 18);
+            this.kivalasztottlabel.TabIndex = 14;
+            this.kivalasztottlabel.Text = "Kiválasztott város:";
+            // 
+            // kivalasztottVarosLabel
+            // 
+            this.kivalasztottVarosLabel.AutoSize = true;
+            this.kivalasztottVarosLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.kivalasztottVarosLabel.Location = new System.Drawing.Point(136, 150);
+            this.kivalasztottVarosLabel.Name = "kivalasztottVarosLabel";
+            this.kivalasztottVarosLabel.Size = new System.Drawing.Size(0, 13);
+            this.kivalasztottVarosLabel.TabIndex = 15;
+            // 
             // Latvanyossagok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 404);
+            this.ClientSize = new System.Drawing.Size(658, 435);
+            this.Controls.Add(this.LatvanyossagTorlesButton);
+            this.Controls.Add(this.varosTorlesButton);
             this.Controls.Add(this.latvanyossagokListBox);
             this.Controls.Add(this.latvanyossagokLabel);
             this.Controls.Add(this.latvanyossagokGroupBox);
@@ -284,6 +350,11 @@
         private System.Windows.Forms.Button latvanyossagHozzaadasButton;
         private System.Windows.Forms.ListBox latvanyossagokListBox;
         private System.Windows.Forms.Label latvanyossagokLabel;
+        private System.Windows.Forms.Label kivalasztottVarosLabel;
+        private System.Windows.Forms.Label kivalasztottlabel;
+        private System.Windows.Forms.Label figyelmeztetesLabel;
+        private System.Windows.Forms.Button varosTorlesButton;
+        private System.Windows.Forms.Button LatvanyossagTorlesButton;
     }
 }
 
