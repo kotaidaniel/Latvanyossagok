@@ -98,8 +98,12 @@ namespace Latvanyossagok
         {
             var varos = (Varos)varosokListBox.SelectedItem;
             var nev = varos.Nev;
+            var lakossag = varos.Lakossag;
             varosKivalasztottIndex = varos.Id;
             kivalasztottVarosLabel.Text = nev;
+            latvanyossagModositottVarosValtas.Text = nev;
+            varosModositottNevTextBox.Text = nev;
+            varosModositottLakossagNumericUpDown.Value = lakossag;
             varosTorlesButton.Enabled = true;
             varosModositasButton.Enabled = true;
             LatvanyossagListazas(varosKivalasztottIndex);
@@ -113,10 +117,9 @@ namespace Latvanyossagok
             cmd.Parameters.AddWithValue("@id", varosKivalasztottIndex);
             cmd.ExecuteNonQuery();
 
-            var cmdDelete = conn.CreateCommand();
-            cmdDelete.CommandText = "DELETE FROM varosok WHERE id = @id";
-            cmdDelete.Parameters.AddWithValue("@id", varosKivalasztottIndex);
-            cmdDelete.ExecuteNonQuery();
+            cmd.CommandText = "DELETE FROM varosok WHERE id = @id";
+            cmd.Parameters.AddWithValue("@id", varosKivalasztottIndex);
+            cmd.ExecuteNonQuery();
             VarosListazas();
             LatvanyossagListazas(-1);
         }
@@ -226,10 +229,99 @@ namespace Latvanyossagok
 
         private void LatvanyossagokListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (latvanyossagokListBox.SelectedIndex != -1) {
+                var latvanyossag = (Latvanyossag)latvanyossagokListBox.SelectedItem;
+                latvanyossagKivalasztottIndex = latvanyossag.Id;
+                latvanyossagModositasButton.Enabled = true;
+                LatvanyossagTorlesButton.Enabled = true;
+            }
+        }
+        private void VarosModositasVegrehajtButton_Click(object sender, EventArgs e)
+        {
+            var varos = (Varos)varosokListBox.SelectedItem;
+            var id = varos.Id;
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "UPDATE varosok SET nev = @nev, lakossag = @lakossag WHERE id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@nev", varosModositottNevTextBox.Text);
+            cmd.Parameters.AddWithValue("@lakossag", varosModositottLakossagNumericUpDown.Value);
+
+            cmd.ExecuteNonQuery();
+            varosModositasGroupBox.Visible = false;
+            varosGroupBox.Visible = true;
+            VarosListazas();
+        }
+        public void VarosModositasEllenorzes() {
+            var regexItem = new Regex("^[A-Za-záéiíoóöőuúüűÁÉIÍOÓÖŐUÚÜŰä]*$");
+            if (regexItem.IsMatch(varosModositottNevTextBox.Text) && !string.IsNullOrWhiteSpace(varosModositottNevTextBox.Text) && varosModositottLakossagNumericUpDown.Value > 0)
+            {
+                varosModositasVegrehajtButton.Enabled = true;
+            }
+            else
+            {
+                varosModositasVegrehajtButton.Enabled = false;
+            }
+        }
+
+        private void VarosModositottNevTextBox_TextChanged(object sender, EventArgs e)
+        {
+            VarosModositasEllenorzes();
+        }
+
+        private void VarosModositottLakossagNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            VarosModositasEllenorzes();
+        }
+
+        private void LatvanyossagModositasButton_Click(object sender, EventArgs e)
+        {
+            latvanyossagokGroupBox.Visible = false;
+            latvanyossagModositasGroupBox.Visible = true;
             var latvanyossag = (Latvanyossag)latvanyossagokListBox.SelectedItem;
-            latvanyossagKivalasztottIndex = latvanyossag.Id;
-            latvanyossagModositasButton.Enabled = true;
-            LatvanyossagTorlesButton.Enabled = true;
+            var nev = latvanyossag.Nev;
+            var leiras = latvanyossag.Leiras;
+            var ar = latvanyossag.Ar;
+            latvanyossagModositottNevTextBox.Text = nev;
+            latvanyossagModositottLeirasTextBox.Text = leiras;
+            latvanyossagModositottArNumericUpDown.Value = ar;
+
+        }
+
+        private void LatvanyossagModositasVegrehajtButton_Click(object sender, EventArgs e)
+        {
+            var latvanyossag = (Latvanyossag)latvanyossagokListBox.SelectedItem;
+            var id = latvanyossag.Id;
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "UPDATE latvanyossagok SET nev = @nev, leiras = @leiras, ar = @ar WHERE id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@nev", latvanyossagModositottNevTextBox.Text);
+            cmd.Parameters.AddWithValue("@leiras", latvanyossagModositottLeirasTextBox.Text);
+            cmd.Parameters.AddWithValue("@ar", latvanyossagModositottArNumericUpDown.Value);
+            cmd.ExecuteNonQuery();
+
+            latvanyossagModositasGroupBox.Visible = false;
+            latvanyossagokGroupBox.Visible = true;
+            LatvanyossagListazas(varosKivalasztottIndex);
+        }
+
+        private void LatvanyossagModositottNevTextBox_TextChanged(object sender, EventArgs e)
+        {
+            LatvanyossagModositasEllenorzes();
+        }
+
+        private void LatvanyossagModositottLeirasTextBox_TextChanged(object sender, EventArgs e)
+        {
+            LatvanyossagModositasEllenorzes();
+        }
+        public void LatvanyossagModositasEllenorzes() {
+            if (!string.IsNullOrWhiteSpace(latvanyossagModositottNevTextBox.Text) && !string.IsNullOrWhiteSpace(latvanyossagModositottLeirasTextBox.Text))
+            {
+                latvanyossagModositasVegrehajtButton.Enabled = true;
+            }
+            else
+            {
+                latvanyossagModositasVegrehajtButton.Enabled = false;
+            }
         }
     }
 }

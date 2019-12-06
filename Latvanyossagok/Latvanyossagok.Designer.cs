@@ -60,18 +60,31 @@
             this.varosModositottLakossagLabel = new System.Windows.Forms.Label();
             this.varosModositottNevTextBox = new System.Windows.Forms.TextBox();
             this.varosModositottNevLabel = new System.Windows.Forms.Label();
+            this.latvanyossagModositasGroupBox = new System.Windows.Forms.GroupBox();
+            this.latvanyossagModositottVarosValtas = new System.Windows.Forms.Label();
+            this.latvanyossagModositottKivalasztottvarosLabel = new System.Windows.Forms.Label();
+            this.lakossagModositottFigyelmeztetesLabel = new System.Windows.Forms.Label();
+            this.latvanyossagModositasVegrehajtButton = new System.Windows.Forms.Button();
+            this.latvanyossagModositottForintLabel = new System.Windows.Forms.Label();
+            this.latvanyossagModositottArNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.latvanyossagModositottLeirasTextBox = new System.Windows.Forms.TextBox();
+            this.latvanyossagModositottNevTextBox = new System.Windows.Forms.TextBox();
+            this.latvanyossagModositottArLabel = new System.Windows.Forms.Label();
+            this.latvanyossagMosdositottLeirasLabel = new System.Windows.Forms.Label();
+            this.latvanyossagModositottNevLabel = new System.Windows.Forms.Label();
             this.varosGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.varosLakossagNumericUpDown)).BeginInit();
             this.latvanyossagokGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.latvanyossagNumericUpDown)).BeginInit();
             this.varosModositasGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.varosModositottLakossagNumericUpDown)).BeginInit();
+            this.latvanyossagModositasGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.latvanyossagModositottArNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // varosGroupBox
             // 
             this.varosGroupBox.BackColor = System.Drawing.SystemColors.Control;
-            this.varosGroupBox.Controls.Add(this.varosModositasGroupBox);
             this.varosGroupBox.Controls.Add(this.varosHozzaadasButton);
             this.varosGroupBox.Controls.Add(this.varosLakossagNumericUpDown);
             this.varosGroupBox.Controls.Add(this.varosLakossagLabel);
@@ -349,6 +362,7 @@
             this.latvanyossagModositasButton.TabIndex = 9;
             this.latvanyossagModositasButton.Text = "Módosítás";
             this.latvanyossagModositasButton.UseVisualStyleBackColor = true;
+            this.latvanyossagModositasButton.Click += new System.EventHandler(this.LatvanyossagModositasButton_Click);
             // 
             // varosModositasGroupBox
             // 
@@ -359,7 +373,7 @@
             this.varosModositasGroupBox.Controls.Add(this.varosModositottNevTextBox);
             this.varosModositasGroupBox.Controls.Add(this.varosModositottNevLabel);
             this.varosModositasGroupBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.varosModositasGroupBox.Location = new System.Drawing.Point(1, 0);
+            this.varosModositasGroupBox.Location = new System.Drawing.Point(7, 13);
             this.varosModositasGroupBox.Name = "varosModositasGroupBox";
             this.varosModositasGroupBox.Size = new System.Drawing.Size(253, 182);
             this.varosModositasGroupBox.TabIndex = 6;
@@ -377,6 +391,7 @@
             this.varosModositasVegrehajtButton.TabIndex = 5;
             this.varosModositasVegrehajtButton.Text = "Módosítás Végrehajtása";
             this.varosModositasVegrehajtButton.UseVisualStyleBackColor = true;
+            this.varosModositasVegrehajtButton.Click += new System.EventHandler(this.VarosModositasVegrehajtButton_Click);
             // 
             // varosModositottLakossagNumericUpDown
             // 
@@ -390,6 +405,7 @@
             this.varosModositottLakossagNumericUpDown.Size = new System.Drawing.Size(238, 20);
             this.varosModositottLakossagNumericUpDown.TabIndex = 4;
             this.varosModositottLakossagNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.varosModositottLakossagNumericUpDown.ValueChanged += new System.EventHandler(this.VarosModositottLakossagNumericUpDown_ValueChanged);
             // 
             // varosModositottLakossagLabel
             // 
@@ -407,6 +423,7 @@
             this.varosModositottNevTextBox.Name = "varosModositottNevTextBox";
             this.varosModositottNevTextBox.Size = new System.Drawing.Size(238, 20);
             this.varosModositottNevTextBox.TabIndex = 2;
+            this.varosModositottNevTextBox.TextChanged += new System.EventHandler(this.VarosModositottNevTextBox_TextChanged);
             // 
             // varosModositottNevLabel
             // 
@@ -418,11 +435,140 @@
             this.varosModositottNevLabel.TabIndex = 1;
             this.varosModositottNevLabel.Text = "Város neve:";
             // 
+            // latvanyossagModositasGroupBox
+            // 
+            this.latvanyossagModositasGroupBox.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.latvanyossagModositasGroupBox.Controls.Add(this.latvanyossagModositottVarosValtas);
+            this.latvanyossagModositasGroupBox.Controls.Add(this.latvanyossagModositottKivalasztottvarosLabel);
+            this.latvanyossagModositasGroupBox.Controls.Add(this.lakossagModositottFigyelmeztetesLabel);
+            this.latvanyossagModositasGroupBox.Controls.Add(this.latvanyossagModositasVegrehajtButton);
+            this.latvanyossagModositasGroupBox.Controls.Add(this.latvanyossagModositottForintLabel);
+            this.latvanyossagModositasGroupBox.Controls.Add(this.latvanyossagModositottArNumericUpDown);
+            this.latvanyossagModositasGroupBox.Controls.Add(this.latvanyossagModositottLeirasTextBox);
+            this.latvanyossagModositasGroupBox.Controls.Add(this.latvanyossagModositottNevTextBox);
+            this.latvanyossagModositasGroupBox.Controls.Add(this.latvanyossagModositottArLabel);
+            this.latvanyossagModositasGroupBox.Controls.Add(this.latvanyossagMosdositottLeirasLabel);
+            this.latvanyossagModositasGroupBox.Controls.Add(this.latvanyossagModositottNevLabel);
+            this.latvanyossagModositasGroupBox.Location = new System.Drawing.Point(273, 13);
+            this.latvanyossagModositasGroupBox.Name = "latvanyossagModositasGroupBox";
+            this.latvanyossagModositasGroupBox.Size = new System.Drawing.Size(373, 182);
+            this.latvanyossagModositasGroupBox.TabIndex = 16;
+            this.latvanyossagModositasGroupBox.TabStop = false;
+            this.latvanyossagModositasGroupBox.Text = "Látványosságok Módosítás";
+            this.latvanyossagModositasGroupBox.Visible = false;
+            // 
+            // latvanyossagModositottVarosValtas
+            // 
+            this.latvanyossagModositottVarosValtas.AutoSize = true;
+            this.latvanyossagModositottVarosValtas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.latvanyossagModositottVarosValtas.Location = new System.Drawing.Point(136, 150);
+            this.latvanyossagModositottVarosValtas.Name = "latvanyossagModositottVarosValtas";
+            this.latvanyossagModositottVarosValtas.Size = new System.Drawing.Size(0, 13);
+            this.latvanyossagModositottVarosValtas.TabIndex = 15;
+            // 
+            // latvanyossagModositottKivalasztottvarosLabel
+            // 
+            this.latvanyossagModositottKivalasztottvarosLabel.AutoSize = true;
+            this.latvanyossagModositottKivalasztottvarosLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.latvanyossagModositottKivalasztottvarosLabel.Location = new System.Drawing.Point(7, 146);
+            this.latvanyossagModositottKivalasztottvarosLabel.Name = "latvanyossagModositottKivalasztottvarosLabel";
+            this.latvanyossagModositottKivalasztottvarosLabel.Size = new System.Drawing.Size(129, 18);
+            this.latvanyossagModositottKivalasztottvarosLabel.TabIndex = 14;
+            this.latvanyossagModositottKivalasztottvarosLabel.Text = "Kiválasztott város:";
+            // 
+            // lakossagModositottFigyelmeztetesLabel
+            // 
+            this.lakossagModositottFigyelmeztetesLabel.AutoSize = true;
+            this.lakossagModositottFigyelmeztetesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lakossagModositottFigyelmeztetesLabel.ForeColor = System.Drawing.Color.Red;
+            this.lakossagModositottFigyelmeztetesLabel.Location = new System.Drawing.Point(7, 129);
+            this.lakossagModositottFigyelmeztetesLabel.Name = "lakossagModositottFigyelmeztetesLabel";
+            this.lakossagModositottFigyelmeztetesLabel.Size = new System.Drawing.Size(212, 12);
+            this.lakossagModositottFigyelmeztetesLabel.TabIndex = 13;
+            this.lakossagModositottFigyelmeztetesLabel.Text = "*Kérjük válasszon ki a városok listából egy várost!";
+            // 
+            // latvanyossagModositasVegrehajtButton
+            // 
+            this.latvanyossagModositasVegrehajtButton.Enabled = false;
+            this.latvanyossagModositasVegrehajtButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.latvanyossagModositasVegrehajtButton.Location = new System.Drawing.Point(247, 139);
+            this.latvanyossagModositasVegrehajtButton.Name = "latvanyossagModositasVegrehajtButton";
+            this.latvanyossagModositasVegrehajtButton.Size = new System.Drawing.Size(120, 37);
+            this.latvanyossagModositasVegrehajtButton.TabIndex = 6;
+            this.latvanyossagModositasVegrehajtButton.Text = "Módosítás";
+            this.latvanyossagModositasVegrehajtButton.UseVisualStyleBackColor = true;
+            this.latvanyossagModositasVegrehajtButton.Click += new System.EventHandler(this.LatvanyossagModositasVegrehajtButton_Click);
+            // 
+            // latvanyossagModositottForintLabel
+            // 
+            this.latvanyossagModositottForintLabel.AutoSize = true;
+            this.latvanyossagModositottForintLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.latvanyossagModositottForintLabel.Location = new System.Drawing.Point(346, 106);
+            this.latvanyossagModositottForintLabel.Name = "latvanyossagModositottForintLabel";
+            this.latvanyossagModositottForintLabel.Size = new System.Drawing.Size(21, 18);
+            this.latvanyossagModositottForintLabel.TabIndex = 12;
+            this.latvanyossagModositottForintLabel.Text = "Ft";
+            // 
+            // latvanyossagModositottArNumericUpDown
+            // 
+            this.latvanyossagModositottArNumericUpDown.Location = new System.Drawing.Point(171, 106);
+            this.latvanyossagModositottArNumericUpDown.Name = "latvanyossagModositottArNumericUpDown";
+            this.latvanyossagModositottArNumericUpDown.Size = new System.Drawing.Size(171, 20);
+            this.latvanyossagModositottArNumericUpDown.TabIndex = 11;
+            this.latvanyossagModositottArNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // latvanyossagModositottLeirasTextBox
+            // 
+            this.latvanyossagModositottLeirasTextBox.Location = new System.Drawing.Point(171, 68);
+            this.latvanyossagModositottLeirasTextBox.Name = "latvanyossagModositottLeirasTextBox";
+            this.latvanyossagModositottLeirasTextBox.Size = new System.Drawing.Size(196, 20);
+            this.latvanyossagModositottLeirasTextBox.TabIndex = 10;
+            this.latvanyossagModositottLeirasTextBox.TextChanged += new System.EventHandler(this.LatvanyossagModositottLeirasTextBox_TextChanged);
+            // 
+            // latvanyossagModositottNevTextBox
+            // 
+            this.latvanyossagModositottNevTextBox.Location = new System.Drawing.Point(171, 29);
+            this.latvanyossagModositottNevTextBox.Name = "latvanyossagModositottNevTextBox";
+            this.latvanyossagModositottNevTextBox.Size = new System.Drawing.Size(196, 20);
+            this.latvanyossagModositottNevTextBox.TabIndex = 9;
+            this.latvanyossagModositottNevTextBox.TextChanged += new System.EventHandler(this.LatvanyossagModositottNevTextBox_TextChanged);
+            // 
+            // latvanyossagModositottArLabel
+            // 
+            this.latvanyossagModositottArLabel.AutoSize = true;
+            this.latvanyossagModositottArLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.latvanyossagModositottArLabel.Location = new System.Drawing.Point(6, 109);
+            this.latvanyossagModositottArLabel.Name = "latvanyossagModositottArLabel";
+            this.latvanyossagModositottArLabel.Size = new System.Drawing.Size(128, 18);
+            this.latvanyossagModositottArLabel.TabIndex = 8;
+            this.latvanyossagModositottArLabel.Text = "Látványosság ára:";
+            // 
+            // latvanyossagMosdositottLeirasLabel
+            // 
+            this.latvanyossagMosdositottLeirasLabel.AutoSize = true;
+            this.latvanyossagMosdositottLeirasLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.latvanyossagMosdositottLeirasLabel.Location = new System.Drawing.Point(6, 67);
+            this.latvanyossagMosdositottLeirasLabel.Name = "latvanyossagMosdositottLeirasLabel";
+            this.latvanyossagMosdositottLeirasLabel.Size = new System.Drawing.Size(150, 18);
+            this.latvanyossagMosdositottLeirasLabel.TabIndex = 7;
+            this.latvanyossagMosdositottLeirasLabel.Text = "Látványosság leírása:";
+            // 
+            // latvanyossagModositottNevLabel
+            // 
+            this.latvanyossagModositottNevLabel.AutoSize = true;
+            this.latvanyossagModositottNevLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.latvanyossagModositottNevLabel.Location = new System.Drawing.Point(6, 28);
+            this.latvanyossagModositottNevLabel.Name = "latvanyossagModositottNevLabel";
+            this.latvanyossagModositottNevLabel.Size = new System.Drawing.Size(138, 18);
+            this.latvanyossagModositottNevLabel.TabIndex = 6;
+            this.latvanyossagModositottNevLabel.Text = "Látványosság neve:";
+            // 
             // Latvanyossagok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 435);
+            this.Controls.Add(this.latvanyossagModositasGroupBox);
             this.Controls.Add(this.latvanyossagModositasButton);
             this.Controls.Add(this.varosModositasButton);
             this.Controls.Add(this.LatvanyossagTorlesButton);
@@ -432,6 +578,7 @@
             this.Controls.Add(this.latvanyossagokGroupBox);
             this.Controls.Add(this.varosokListBox);
             this.Controls.Add(this.varosokLabel);
+            this.Controls.Add(this.varosModositasGroupBox);
             this.Controls.Add(this.varosGroupBox);
             this.MaximizeBox = false;
             this.Name = "Latvanyossagok";
@@ -446,6 +593,9 @@
             this.varosModositasGroupBox.ResumeLayout(false);
             this.varosModositasGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.varosModositottLakossagNumericUpDown)).EndInit();
+            this.latvanyossagModositasGroupBox.ResumeLayout(false);
+            this.latvanyossagModositasGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.latvanyossagModositottArNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,6 +635,18 @@
         private System.Windows.Forms.Label varosModositottLakossagLabel;
         private System.Windows.Forms.TextBox varosModositottNevTextBox;
         private System.Windows.Forms.Label varosModositottNevLabel;
+        private System.Windows.Forms.GroupBox latvanyossagModositasGroupBox;
+        private System.Windows.Forms.Label latvanyossagModositottVarosValtas;
+        private System.Windows.Forms.Label latvanyossagModositottKivalasztottvarosLabel;
+        private System.Windows.Forms.Label lakossagModositottFigyelmeztetesLabel;
+        private System.Windows.Forms.Button latvanyossagModositasVegrehajtButton;
+        private System.Windows.Forms.Label latvanyossagModositottForintLabel;
+        private System.Windows.Forms.NumericUpDown latvanyossagModositottArNumericUpDown;
+        private System.Windows.Forms.TextBox latvanyossagModositottLeirasTextBox;
+        private System.Windows.Forms.TextBox latvanyossagModositottNevTextBox;
+        private System.Windows.Forms.Label latvanyossagModositottArLabel;
+        private System.Windows.Forms.Label latvanyossagMosdositottLeirasLabel;
+        private System.Windows.Forms.Label latvanyossagModositottNevLabel;
     }
 }
 
