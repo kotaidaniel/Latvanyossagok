@@ -53,16 +53,25 @@
             this.varosTorlesButton = new System.Windows.Forms.Button();
             this.LatvanyossagTorlesButton = new System.Windows.Forms.Button();
             this.varosModositasButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.latvanyossagModositasButton = new System.Windows.Forms.Button();
+            this.varosModositasGroupBox = new System.Windows.Forms.GroupBox();
+            this.varosModositasVegrehajtButton = new System.Windows.Forms.Button();
+            this.varosModositottLakossagNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.varosModositottLakossagLabel = new System.Windows.Forms.Label();
+            this.varosModositottNevTextBox = new System.Windows.Forms.TextBox();
+            this.varosModositottNevLabel = new System.Windows.Forms.Label();
             this.varosGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.varosLakossagNumericUpDown)).BeginInit();
             this.latvanyossagokGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.latvanyossagNumericUpDown)).BeginInit();
+            this.varosModositasGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.varosModositottLakossagNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // varosGroupBox
             // 
             this.varosGroupBox.BackColor = System.Drawing.SystemColors.Control;
+            this.varosGroupBox.Controls.Add(this.varosModositasGroupBox);
             this.varosGroupBox.Controls.Add(this.varosHozzaadasButton);
             this.varosGroupBox.Controls.Add(this.varosLakossagNumericUpDown);
             this.varosGroupBox.Controls.Add(this.varosLakossagLabel);
@@ -74,10 +83,11 @@
             this.varosGroupBox.Size = new System.Drawing.Size(253, 182);
             this.varosGroupBox.TabIndex = 0;
             this.varosGroupBox.TabStop = false;
-            this.varosGroupBox.Text = "Váos hozzáadás";
+            this.varosGroupBox.Text = "Város hozzáadás";
             // 
             // varosHozzaadasButton
             // 
+            this.varosHozzaadasButton.Enabled = false;
             this.varosHozzaadasButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.varosHozzaadasButton.Location = new System.Drawing.Point(9, 137);
             this.varosHozzaadasButton.Name = "varosHozzaadasButton";
@@ -99,6 +109,7 @@
             this.varosLakossagNumericUpDown.Size = new System.Drawing.Size(238, 20);
             this.varosLakossagNumericUpDown.TabIndex = 4;
             this.varosLakossagNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.varosLakossagNumericUpDown.ValueChanged += new System.EventHandler(this.VarosLakossagNumericUpDown_ValueChanged);
             // 
             // varosLakossagLabel
             // 
@@ -116,6 +127,7 @@
             this.varosNeveTextBox.Name = "varosNeveTextBox";
             this.varosNeveTextBox.Size = new System.Drawing.Size(238, 20);
             this.varosNeveTextBox.TabIndex = 2;
+            this.varosNeveTextBox.TextChanged += new System.EventHandler(this.VarosNeveTextBox_TextChanged);
             // 
             // varosNeveLabel
             // 
@@ -198,6 +210,7 @@
             // 
             // latvanyossagHozzaadasButton
             // 
+            this.latvanyossagHozzaadasButton.Enabled = false;
             this.latvanyossagHozzaadasButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.latvanyossagHozzaadasButton.Location = new System.Drawing.Point(247, 139);
             this.latvanyossagHozzaadasButton.Name = "latvanyossagHozzaadasButton";
@@ -231,6 +244,7 @@
             this.latvanyossagLeirasaTextBox.Name = "latvanyossagLeirasaTextBox";
             this.latvanyossagLeirasaTextBox.Size = new System.Drawing.Size(196, 20);
             this.latvanyossagLeirasaTextBox.TabIndex = 10;
+            this.latvanyossagLeirasaTextBox.TextChanged += new System.EventHandler(this.LatvanyossagLeirasaTextBox_TextChanged);
             // 
             // latvanyossagNeveTextBox
             // 
@@ -238,6 +252,7 @@
             this.latvanyossagNeveTextBox.Name = "latvanyossagNeveTextBox";
             this.latvanyossagNeveTextBox.Size = new System.Drawing.Size(196, 20);
             this.latvanyossagNeveTextBox.TabIndex = 9;
+            this.latvanyossagNeveTextBox.TextChanged += new System.EventHandler(this.LatvanyossagNeveTextBox_TextChanged);
             // 
             // latvanyossagArLabel
             // 
@@ -276,6 +291,7 @@
             this.latvanyossagokListBox.Name = "latvanyossagokListBox";
             this.latvanyossagokListBox.Size = new System.Drawing.Size(253, 173);
             this.latvanyossagokListBox.TabIndex = 5;
+            this.latvanyossagokListBox.SelectedIndexChanged += new System.EventHandler(this.LatvanyossagokListBox_SelectedIndexChanged);
             // 
             // latvanyossagokLabel
             // 
@@ -289,6 +305,7 @@
             // 
             // varosTorlesButton
             // 
+            this.varosTorlesButton.Enabled = false;
             this.varosTorlesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.varosTorlesButton.Location = new System.Drawing.Point(90, 398);
             this.varosTorlesButton.Name = "varosTorlesButton";
@@ -300,6 +317,7 @@
             // 
             // LatvanyossagTorlesButton
             // 
+            this.LatvanyossagTorlesButton.Enabled = false;
             this.LatvanyossagTorlesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.LatvanyossagTorlesButton.Location = new System.Drawing.Point(417, 398);
             this.LatvanyossagTorlesButton.Name = "LatvanyossagTorlesButton";
@@ -311,6 +329,7 @@
             // 
             // varosModositasButton
             // 
+            this.varosModositasButton.Enabled = false;
             this.varosModositasButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.varosModositasButton.Location = new System.Drawing.Point(172, 398);
             this.varosModositasButton.Name = "varosModositasButton";
@@ -320,22 +339,91 @@
             this.varosModositasButton.UseVisualStyleBackColor = true;
             this.varosModositasButton.Click += new System.EventHandler(this.VarosModositasButton_Click);
             // 
-            // button1
+            // latvanyossagModositasButton
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(498, 398);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 25);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Módosítás";
-            this.button1.UseVisualStyleBackColor = true;
+            this.latvanyossagModositasButton.Enabled = false;
+            this.latvanyossagModositasButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.latvanyossagModositasButton.Location = new System.Drawing.Point(498, 398);
+            this.latvanyossagModositasButton.Name = "latvanyossagModositasButton";
+            this.latvanyossagModositasButton.Size = new System.Drawing.Size(97, 25);
+            this.latvanyossagModositasButton.TabIndex = 9;
+            this.latvanyossagModositasButton.Text = "Módosítás";
+            this.latvanyossagModositasButton.UseVisualStyleBackColor = true;
+            // 
+            // varosModositasGroupBox
+            // 
+            this.varosModositasGroupBox.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.varosModositasGroupBox.Controls.Add(this.varosModositasVegrehajtButton);
+            this.varosModositasGroupBox.Controls.Add(this.varosModositottLakossagNumericUpDown);
+            this.varosModositasGroupBox.Controls.Add(this.varosModositottLakossagLabel);
+            this.varosModositasGroupBox.Controls.Add(this.varosModositottNevTextBox);
+            this.varosModositasGroupBox.Controls.Add(this.varosModositottNevLabel);
+            this.varosModositasGroupBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.varosModositasGroupBox.Location = new System.Drawing.Point(1, 0);
+            this.varosModositasGroupBox.Name = "varosModositasGroupBox";
+            this.varosModositasGroupBox.Size = new System.Drawing.Size(253, 182);
+            this.varosModositasGroupBox.TabIndex = 6;
+            this.varosModositasGroupBox.TabStop = false;
+            this.varosModositasGroupBox.Text = "Város Módosítás";
+            this.varosModositasGroupBox.Visible = false;
+            // 
+            // varosModositasVegrehajtButton
+            // 
+            this.varosModositasVegrehajtButton.Enabled = false;
+            this.varosModositasVegrehajtButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.varosModositasVegrehajtButton.Location = new System.Drawing.Point(9, 137);
+            this.varosModositasVegrehajtButton.Name = "varosModositasVegrehajtButton";
+            this.varosModositasVegrehajtButton.Size = new System.Drawing.Size(238, 37);
+            this.varosModositasVegrehajtButton.TabIndex = 5;
+            this.varosModositasVegrehajtButton.Text = "Módosítás Végrehajtása";
+            this.varosModositasVegrehajtButton.UseVisualStyleBackColor = true;
+            // 
+            // varosModositottLakossagNumericUpDown
+            // 
+            this.varosModositottLakossagNumericUpDown.Location = new System.Drawing.Point(9, 111);
+            this.varosModositottLakossagNumericUpDown.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.varosModositottLakossagNumericUpDown.Name = "varosModositottLakossagNumericUpDown";
+            this.varosModositottLakossagNumericUpDown.Size = new System.Drawing.Size(238, 20);
+            this.varosModositottLakossagNumericUpDown.TabIndex = 4;
+            this.varosModositottLakossagNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // varosModositottLakossagLabel
+            // 
+            this.varosModositottLakossagLabel.AutoSize = true;
+            this.varosModositottLakossagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.varosModositottLakossagLabel.Location = new System.Drawing.Point(6, 89);
+            this.varosModositottLakossagLabel.Name = "varosModositottLakossagLabel";
+            this.varosModositottLakossagLabel.Size = new System.Drawing.Size(123, 18);
+            this.varosModositottLakossagLabel.TabIndex = 3;
+            this.varosModositottLakossagLabel.Text = "Város lakossága:";
+            // 
+            // varosModositottNevTextBox
+            // 
+            this.varosModositottNevTextBox.Location = new System.Drawing.Point(9, 49);
+            this.varosModositottNevTextBox.Name = "varosModositottNevTextBox";
+            this.varosModositottNevTextBox.Size = new System.Drawing.Size(238, 20);
+            this.varosModositottNevTextBox.TabIndex = 2;
+            // 
+            // varosModositottNevLabel
+            // 
+            this.varosModositottNevLabel.AutoSize = true;
+            this.varosModositottNevLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.varosModositottNevLabel.Location = new System.Drawing.Point(6, 28);
+            this.varosModositottNevLabel.Name = "varosModositottNevLabel";
+            this.varosModositottNevLabel.Size = new System.Drawing.Size(86, 18);
+            this.varosModositottNevLabel.TabIndex = 1;
+            this.varosModositottNevLabel.Text = "Város neve:";
             // 
             // Latvanyossagok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 435);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.latvanyossagModositasButton);
             this.Controls.Add(this.varosModositasButton);
             this.Controls.Add(this.LatvanyossagTorlesButton);
             this.Controls.Add(this.varosTorlesButton);
@@ -355,6 +443,9 @@
             this.latvanyossagokGroupBox.ResumeLayout(false);
             this.latvanyossagokGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.latvanyossagNumericUpDown)).EndInit();
+            this.varosModositasGroupBox.ResumeLayout(false);
+            this.varosModositasGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.varosModositottLakossagNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -387,7 +478,13 @@
         private System.Windows.Forms.Button varosTorlesButton;
         private System.Windows.Forms.Button LatvanyossagTorlesButton;
         private System.Windows.Forms.Button varosModositasButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button latvanyossagModositasButton;
+        private System.Windows.Forms.GroupBox varosModositasGroupBox;
+        private System.Windows.Forms.Button varosModositasVegrehajtButton;
+        private System.Windows.Forms.NumericUpDown varosModositottLakossagNumericUpDown;
+        private System.Windows.Forms.Label varosModositottLakossagLabel;
+        private System.Windows.Forms.TextBox varosModositottNevTextBox;
+        private System.Windows.Forms.Label varosModositottNevLabel;
     }
 }
 

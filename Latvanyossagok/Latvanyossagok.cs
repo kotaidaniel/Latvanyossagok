@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,9 +14,9 @@ namespace Latvanyossagok
 {
     public partial class Latvanyossagok : Form
     {
-        Modositas modositas;
         MySqlConnection conn;
         int varosKivalasztottIndex;
+        int latvanyossagKivalasztottIndex;
         public Latvanyossagok()
         {
             InitializeComponent();
@@ -62,7 +63,7 @@ namespace Latvanyossagok
 
         private void VarosHozzaadasButton_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(varosNeveTextBox.Text) && varosLakossagNumericUpDown.Value > 0) 
+            if (varosHozzaadasButton.Enabled == true && varosLakossagNumericUpDown.Value > 0) 
             {
                 var cmd = conn.CreateCommand();
                 cmd.CommandText = "SELECT nev FROM varosok";
@@ -99,8 +100,11 @@ namespace Latvanyossagok
             var nev = varos.Nev;
             varosKivalasztottIndex = varos.Id;
             kivalasztottVarosLabel.Text = nev;
+            varosTorlesButton.Enabled = true;
+            varosModositasButton.Enabled = true;
             LatvanyossagListazas(varosKivalasztottIndex);
-        }
+            LatvanyossagEllenorzo();
+    }
 
         private void VarosTorlesButton_Click(object sender, EventArgs e)
         {
@@ -167,8 +171,65 @@ namespace Latvanyossagok
 
         private void VarosModositasButton_Click(object sender, EventArgs e)
         {
-            modositas = new Modositas();
-            modositas.Show();
+            varosGroupBox.Visible = false;
+            varosModositasGroupBox.Visible = true;
+            var varos = (Varos)varosokListBox.SelectedItem;
+            varosModositottNevTextBox.Text = varos.Nev;
+            varosModositottLakossagNumericUpDown.Value = varos.Lakossag;
+            
+        }
+
+        private void VarosNeveTextBox_TextChanged(object sender, EventArgs e)
+        {
+            VarosEllenorzo();
+        }
+
+
+        private void LatvanyossagLeirasaTextBox_TextChanged(object sender, EventArgs e)
+        {
+            LatvanyossagEllenorzo();
+        }
+
+
+        public void LatvanyossagEllenorzo() {
+            var regexItem = new Regex("^[A-Za-záéiíoóöőuúüűÁÉIÍOÓÖŐUÚÜŰä ]*$");
+            if (regexItem.IsMatch(latvanyossagNeveTextBox.Text) && !string.IsNullOrWhiteSpace(latvanyossagNeveTextBox.Text) && !string.IsNullOrWhiteSpace(latvanyossagLeirasaTextBox.Text) && varosokListBox.SelectedIndex != -1)
+            {
+                latvanyossagHozzaadasButton.Enabled = true;
+            }
+            else
+            {
+                latvanyossagHozzaadasButton.Enabled = false;
+            }
+        }
+        public void VarosEllenorzo()
+        {
+            var regexItem = new Regex("^[A-Za-záéiíoóöőuúüűÁÉIÍOÓÖŐUÚÜŰä]*$");
+            if (regexItem.IsMatch(varosNeveTextBox.Text) && !string.IsNullOrWhiteSpace(varosNeveTextBox.Text) && varosLakossagNumericUpDown.Value > 0)
+            {
+                varosHozzaadasButton.Enabled = true;
+            }
+            else
+            {
+                varosHozzaadasButton.Enabled = false;
+            }
+        }
+        private void LatvanyossagNeveTextBox_TextChanged(object sender, EventArgs e)
+        {
+            LatvanyossagEllenorzo();
+        }
+
+        private void VarosLakossagNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            VarosEllenorzo();
+        }
+
+        private void LatvanyossagokListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var latvanyossag = (Latvanyossag)latvanyossagokListBox.SelectedItem;
+            latvanyossagKivalasztottIndex = latvanyossag.Id;
+            latvanyossagModositasButton.Enabled = true;
+            LatvanyossagTorlesButton.Enabled = true;
         }
     }
 }
