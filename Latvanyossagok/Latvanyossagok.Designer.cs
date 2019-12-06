@@ -246,6 +246,11 @@
             // latvanyossagNumericUpDown
             // 
             this.latvanyossagNumericUpDown.Location = new System.Drawing.Point(171, 106);
+            this.latvanyossagNumericUpDown.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.latvanyossagNumericUpDown.Name = "latvanyossagNumericUpDown";
             this.latvanyossagNumericUpDown.Size = new System.Drawing.Size(171, 20);
             this.latvanyossagNumericUpDown.TabIndex = 11;
@@ -512,6 +517,11 @@
             // latvanyossagModositottArNumericUpDown
             // 
             this.latvanyossagModositottArNumericUpDown.Location = new System.Drawing.Point(171, 106);
+            this.latvanyossagModositottArNumericUpDown.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.latvanyossagModositottArNumericUpDown.Name = "latvanyossagModositottArNumericUpDown";
             this.latvanyossagModositottArNumericUpDown.Size = new System.Drawing.Size(171, 20);
             this.latvanyossagModositottArNumericUpDown.TabIndex = 11;
@@ -568,7 +578,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 435);
-            this.Controls.Add(this.latvanyossagModositasGroupBox);
             this.Controls.Add(this.latvanyossagModositasButton);
             this.Controls.Add(this.varosModositasButton);
             this.Controls.Add(this.LatvanyossagTorlesButton);
@@ -580,6 +589,7 @@
             this.Controls.Add(this.varosokLabel);
             this.Controls.Add(this.varosModositasGroupBox);
             this.Controls.Add(this.varosGroupBox);
+            this.Controls.Add(this.latvanyossagModositasGroupBox);
             this.MaximizeBox = false;
             this.Name = "Latvanyossagok";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -117,8 +117,8 @@ namespace Latvanyossagok
             cmd.Parameters.AddWithValue("@id", varosKivalasztottIndex);
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = "DELETE FROM varosok WHERE id = @id";
-            cmd.Parameters.AddWithValue("@id", varosKivalasztottIndex);
+            cmd.CommandText = "DELETE FROM varosok WHERE id = @latid";
+            cmd.Parameters.AddWithValue("@latid", varosKivalasztottIndex);
             cmd.ExecuteNonQuery();
             VarosListazas();
             LatvanyossagListazas(-1);
@@ -289,19 +289,21 @@ namespace Latvanyossagok
 
         private void LatvanyossagModositasVegrehajtButton_Click(object sender, EventArgs e)
         {
-            var latvanyossag = (Latvanyossag)latvanyossagokListBox.SelectedItem;
-            var id = latvanyossag.Id;
-            var cmd = conn.CreateCommand();
-            cmd.CommandText = "UPDATE latvanyossagok SET nev = @nev, leiras = @leiras, ar = @ar WHERE id = @id";
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.Parameters.AddWithValue("@nev", latvanyossagModositottNevTextBox.Text);
-            cmd.Parameters.AddWithValue("@leiras", latvanyossagModositottLeirasTextBox.Text);
-            cmd.Parameters.AddWithValue("@ar", latvanyossagModositottArNumericUpDown.Value);
-            cmd.ExecuteNonQuery();
+                var latvanyossag = (Latvanyossag)latvanyossagokListBox.SelectedItem;
+                var id = latvanyossag.Id;
+                var varos = (Varos)varosokListBox.SelectedItem;
+                var varid = varos.Id;
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = "UPDATE latvanyossagok SET nev = @nev, leiras = @leiras, ar = @ar WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@nev", latvanyossagModositottNevTextBox.Text);
+                cmd.Parameters.AddWithValue("@leiras", latvanyossagModositottLeirasTextBox.Text);
+                cmd.Parameters.AddWithValue("@ar", latvanyossagModositottArNumericUpDown.Value);
+                cmd.ExecuteNonQuery();
 
-            latvanyossagModositasGroupBox.Visible = false;
-            latvanyossagokGroupBox.Visible = true;
-            LatvanyossagListazas(varosKivalasztottIndex);
+                latvanyossagModositasGroupBox.Visible = false;
+                latvanyossagokGroupBox.Visible = true;
+                LatvanyossagListazas(varosKivalasztottIndex);
         }
 
         private void LatvanyossagModositottNevTextBox_TextChanged(object sender, EventArgs e)
